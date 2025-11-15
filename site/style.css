@@ -37,10 +37,9 @@ html, body {
     transition-delay: 0s;
 }
 
-
 /* ================== BOTÕES ================== */
 .button-wrapper {
-    margin-top: clamp(30px, 6vw, 80px); /* espaçamento adaptativo */
+    margin-top: clamp(30px, 6vw, 80px);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -48,7 +47,7 @@ html, body {
     align-items: center;
     width: 90%;
     max-width: 220px;
-    padding-bottom: 40px; /* evita que fique colado no rodapé */
+    padding-bottom: 40px;
     z-index: 1;
 }
 
@@ -133,7 +132,7 @@ html, body {
     }
 
     .button-wrapper {
-        margin-top: 30px;
+        margin-top: clamp(40px, 8vh, 70px);
         width: 95%;
         max-width: 250px;
     }
@@ -145,8 +144,17 @@ html, body {
 }
 
 @media (max-width: 480px) {
+    /* No mobile, centralizamos melhor os botões */
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
     .gif-container {
-        margin-top: 15px;
+        margin-top: 20px;
     }
 
     #gif {
@@ -154,15 +162,17 @@ html, body {
     }
 
     .button-wrapper {
-        margin-top: 25px;
+        flex-grow: 1;              /* ocupa espaço restante */
+        display: flex;
+        justify-content: center;   /* centraliza verticalmente */
+        margin-top: 0;             /* remove margem extra */
+        margin-bottom: 40px;       /* dá espaço do rodapé */
+        width: 95%;
+        max-width: 250px;
     }
 
     .btn-neo {
         font-size: 12px;
         height: 38px;
     }
-}
-
-#gif.visible {
-    opacity: 1;
 }
