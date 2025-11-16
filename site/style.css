@@ -3,34 +3,42 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
     font-family: Candara, sans-serif;
-    background-color: #F0F0F0;
+
+    /* Fundo cobrindo toda a tela */
+    background-image: url('img/fundo.jpeg');
+    background-size: cover;           /* cobre toda a tela */
+    background-position: center;      /* centraliza a imagem */
+    background-repeat: no-repeat;
+    background-attachment: scroll;    /* rola junto no mobile e desktop */
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
 }
 
 /* ================== GIF RESPONSIVO ================== */
 .gif-container {
-    width: 90%;
-    max-width: 900px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: clamp(30px, 5vw, 60px);
+    margin-top: 8px;
 }
 
 #gif {
     width: 100%;
-    height: auto;
-    max-height: 60vh;
+    max-width: 1000px;
+    height: 40vh;
+    object-fit: cover;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.8s ease, visibility 0s linear 1.8s;
 }
 
-/* Quando o GIF estiver visível */
 #gif.visible {
     opacity: 1;
     visibility: visible;
@@ -39,16 +47,15 @@ html, body {
 
 /* ================== BOTÕES ================== */
 .button-wrapper {
-    margin-top: clamp(30px, 6vw, 80px);
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 220px;
-    padding-bottom: 40px;
-    z-index: 1;
+    max-width: 250px;
+    padding-bottom: 30px;
 }
 
 .click-btn {
@@ -107,9 +114,31 @@ html, body {
 }
 
 /* ================== RESPONSIVIDADE ================== */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
+    html, body {
+        height: 100dvh;                /* ocupa toda a altura da tela */
+        overflow-y: auto;
+        background-size: cover;        /* cobre toda a tela mesmo cortando */
+        background-position: center;
+        background-attachment: scroll; /* rola junto no mobile */
+    }
+
+    .gif-container {
+        margin-top: 16px;
+    }
+
     #gif {
-        max-height: 50vh;
+        width: 100%;
+        height: auto;
+        max-height: 240px;
+        object-fit: contain;
+    }
+
+    .button-wrapper {
+        margin-top: 30px;
+        width: 95%;
+        max-width: 250px;
+        padding-bottom: 20px;
     }
 
     .btn-neo {
@@ -118,61 +147,17 @@ html, body {
     }
 }
 
-@media (max-width: 768px) {
-    body {
-        padding: 0 10px;
-    }
-
-    .gif-container {
-        margin-top: 20px;
-    }
-
+@media (max-width: 480px) {
     #gif {
-        max-height: 45vh;
+        max-height: 200px;
     }
 
     .button-wrapper {
-        margin-top: clamp(40px, 8vh, 70px);
-        width: 95%;
-        max-width: 250px;
+        margin-top: 40px;
     }
 
     .btn-neo {
         font-size: 13px;
         height: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* No mobile, centralizamos melhor os botões */
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .gif-container {
-        margin-top: 20px;
-    }
-
-    #gif {
-        max-height: 40vh;
-    }
-
-    .button-wrapper {
-        flex-grow: 1;              /* ocupa espaço restante */
-        display: flex;
-        justify-content: center;   /* centraliza verticalmente */
-        margin-top: 0;             /* remove margem extra */
-        margin-bottom: 40px;       /* dá espaço do rodapé */
-        width: 95%;
-        max-width: 250px;
-    }
-
-    .btn-neo {
-        font-size: 12px;
-        height: 38px;
     }
 }
